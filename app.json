@@ -1,7 +1,7 @@
 {
   "name": "maid-board",
   "description": "秘密の匿名掲示板",
-  "repository": "https://github.com/progedu/secret-board-3033",
+  "repository": "https://github.com/ikedaema2018/maid-board.git",
   "logo": "",
   "keywords": ["node"],
   "image": "heroku/nodejs"
