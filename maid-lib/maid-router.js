@@ -15,9 +15,9 @@ function route(req, res) {
     case '/logout':
       util.handleMaidLogout(req, res);
       break;
-    case '/favicon.ico':
-      util.handleFavicon(req, res);
-      break;
+    // case '/favicon.ico':
+    //   util.handleFavicon(req, res);
+    //   break;
     default:
       util.handleMaidNotFound(req, res);
       break;

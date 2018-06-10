@@ -25,18 +25,18 @@ function handleMaidLogout(req, res) {
   );
 }
 
-function handleFavicon(req, res) {
-  res.writeHead(200, {
-    'Content-Type': 'image/vnd.microsoft.icon'
-  });
-  const favicon = fs.readFileSync('./favicon.ico');
-  res.end(favicon);
-}
+// function handleFavicon(req, res) {
+//   res.writeHead(200, {
+//     'Content-Type': 'image/vnd.microsoft.icon'
+//   });
+//   const favicon = fs.readFileSync('./favicon.ico');
+//   res.end(favicon);
+// }
 
 module.exports = {
   handleMaidNotFound: handleMaidNotFound,
   handleMaidLogout: handleMaidLogout,
   handleMaidBadRequest: handleMaidBadRequest,
-  handleFavicon: handleFavicon
+  // handleFavicon: handleFavicon
 }
 
