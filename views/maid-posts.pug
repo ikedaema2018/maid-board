@@ -21,7 +21,7 @@ html(lang="ja")
     each post in posts
       div.card.my-3
         div.card-header
-          - var isPostedByAdmin = (post.postedBy === 'admin')
+          - var isPostedByAdmin = (post.postedBy === 'kei')
           if isPostedByAdmin
             span #{post.id} : 管理人 ★
           else
@@ -31,7 +31,7 @@ html(lang="ja")
           p(style="white-space: pre" overflow: auto) #{post.content}
         div.card-footer
           div 投稿日時: #{post.formattedCreatedAt}
-          - var isAdmin = (user === 'admin')
+          - var isAdmin = (user === 'kei')
           if isAdmin
             div 投稿者: #{post.postedBy}
           - var isDeletable = (user === post.postedBy || isAdmin)

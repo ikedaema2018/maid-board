@@ -83,7 +83,7 @@ function handleDelete(req, res) {
       const requestedOneTimeToken = dataArray[1] ? dataArray[1].split('oneTimeToken=')[1] : '';
       if (oneTimeTokenMap.get(req.user) === requestedOneTimeToken) {
        Maid.findById(id).then((post) => {
-          if (req.user === post.postedBy || req.user === 'admin') {
+          if (req.user === post.postedBy || req.user === 'kei') {
             post.destroy();
             console.info(
               `削除されました: user: ${req.user}, ` +
