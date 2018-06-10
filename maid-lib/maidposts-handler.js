@@ -50,13 +50,13 @@ function handle(req, res) {
         const requestedOneTimeToken = dataArray[1] ? dataArray[1].split('oneTimeToken=')[1] : '';
         if (oneTimeTokenMap.get(req.user) === requestedOneTimeToken) {
           console.info('投稿されました: ' + content);
-          Post.create({
+          Maid.create({
             content: content,
             trackingCookie: trackingId,
             postedBy: req.user
           }).then(() => {
             oneTimeTokenMap.delete(req.user);
-            handleRedirectPosts(req, res);
+            handleMaidRedirectPosts(req, res);
           });
         } else {
           util.handleMaidBadRequest(req, res);
@@ -82,7 +82,7 @@ function handleDelete(req, res) {
       const id = dataArray[0] ? dataArray[0].split('id=')[1] : '';
       const requestedOneTimeToken = dataArray[1] ? dataArray[1].split('oneTimeToken=')[1] : '';
       if (oneTimeTokenMap.get(req.user) === requestedOneTimeToken) {
-       Post.findById(id).then((post) => {
+       Maid.findById(id).then((post) => {
           if (req.user === post.postedBy || req.user === 'admin') {
             post.destroy();
             console.info(
@@ -92,11 +92,12 @@ function handleDelete(req, res) {
             );
             oneTimeTokenMap.delete(req.user);
           }
-          handleRedirectPosts(req, res);
+          handleMaidRedirectPosts(req, res);
         });
       } else {
-        util.handleBadRequest(req, res);
+        util.handleMaidBadRequest(req, res);
       }
+    });
       break;
     default:
       util.handleMaidBadRequest(req, res);
